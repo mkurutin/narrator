@@ -1,22 +1,23 @@
 package com.mkurutin.narrator;
 
-import android.os.Bundle;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.robolectric.Shadows.shadowOf;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class)
 public class MainActivityTest {
 
     @Test
     public void shouldSetMainContentView() throws Exception {
-        MainActivity mainActivity = new MainActivity();
-        mainActivity.onCreate(Bundle.EMPTY);
+        MainActivity activity = Robolectric.buildActivity(MainActivity.class).create().get();
 
-        assertThat(shadowOf(mainActivity).getContentView().getId(), is(R.layout.activity_main));
+        assertThat(shadowOf(activity).getContentView().getId(), is(R.id.main_linear_layout));
     }
 }
