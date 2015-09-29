@@ -27,5 +27,4 @@ public class MainActivityTest {
     public void shouldSetMainContentView() throws Exception {
         assertThat(shadowOf(activity).getContentView().getId(), is(R.id.main_linear_layout));
     }
-
 }

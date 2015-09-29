@@ -22,6 +22,6 @@ public class NarratorModule {
 
     @Provides
     MediaPlayer provideMediaPlayer(ApplicationStateStore applicationStateStore) {
-        return MediaPlayer.create(application, applicationStateStore.getAudioFileSelection());
+        return new MediaPlayer();
     }
 }

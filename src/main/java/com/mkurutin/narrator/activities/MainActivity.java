@@ -6,6 +6,7 @@ import android.view.View;
 import com.mkurutin.narrator.R;
 import com.mkurutin.narrator.config.NarratorApplication;
 import com.mkurutin.narrator.services.AudioPlayer;
+import com.mkurutin.narrator.services.AudioRecorder;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -14,6 +15,8 @@ public class MainActivity extends Activity {
 
     @Inject
     AudioPlayer audioPlayer;
+    @Inject
+    AudioRecorder audioRecorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class MainActivity extends Activity {
     protected void onStart() {
         super.onStart();
         audioPlayer.init();
+        audioRecorder.init();
     }
 
     public void playAudio(View button) {
@@ -40,9 +44,18 @@ public class MainActivity extends Activity {
         audioPlayer.startFromBeginning();
     }
 
+    public void recordAudio(View view) {
+        audioRecorder.startRecording();
+    }
+
+    public void stopAudioRecording(View view) {
+        audioRecorder.finishRecording();
+    }
+
     @Override
     protected void onStop() {
         audioPlayer.shutDown();
+        audioRecorder.shutDown();
         super.onStop();
     }
 }

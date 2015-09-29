@@ -5,5 +5,7 @@
     <string name="play_button">Play</string>
     <string name="stop_button">Stop</string>
     <string name="reset_button">Reset</string>
+    <string name="record_button">Record</string>
+    <string name="stop_recording_button">Stop recording</string>
 
 </resources>

@@ -8,7 +8,8 @@
               tools:context=".MainActivity">
 
     <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:gravity="center">
         <Button android:id="@+id/play_button"
                 android:layout_width="wrap_content"
@@ -27,5 +28,21 @@
                 android:layout_toEndOf="@+id/stop_button"
                 android:onClick="resetAudio"
                 android:text="@string/reset_button"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+        <Button android:id="@+id/record_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="recordAudio"
+                android:text="@string/record_button"/>
+        <Button android:id="@+id/stop_recording_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/record_button"
+                android:onClick="stopAudioRecording"
+                android:text="@string/stop_recording_button"/>
     </RelativeLayout>
 </LinearLayout>
