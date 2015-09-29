@@ -1,5 +1,7 @@
 package com.mkurutin.narrator;
 
+import com.mkurutin.narrator.activities.MainActivity;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -14,10 +16,16 @@ import static org.robolectric.Shadows.shadowOf;
 @Config(constants = BuildConfig.class)
 public class MainActivityTest {
 
+    private MainActivity activity;
+
+    @Before
+    public void setUp() throws Exception {
+        activity = Robolectric.buildActivity(MainActivity.class).create().get();
+    }
+
     @Test
     public void shouldSetMainContentView() throws Exception {
-        MainActivity activity = Robolectric.buildActivity(MainActivity.class).create().get();
-
         assertThat(shadowOf(activity).getContentView().getId(), is(R.id.main_linear_layout));
     }
+
 }
