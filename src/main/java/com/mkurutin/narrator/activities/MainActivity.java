@@ -36,19 +36,19 @@ public class MainActivity extends Activity {
         audioPlayer.startFromLastPosition();
     }
 
-    public void stopAudio(View button) {
+    public void pauseAudio(View button) {
         audioPlayer.pause();
     }
 
-    public void resetAudio(View view) throws IOException {
+    public void replayAudio(View view) throws IOException {
         audioPlayer.startFromBeginning();
     }
 
-    public void recordAudio(View view) {
+    public void startRecording(View view) {
         audioRecorder.startRecording();
     }
 
-    public void stopAudioRecording(View view) {
+    public void playBackRecording(View view) {
         audioRecorder.finishRecording();
     }
 
