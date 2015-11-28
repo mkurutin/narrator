@@ -27,12 +27,14 @@
                 android:visibility="gone"
                 android:background="@android:color/transparent"
                 android:layout_toEndOf="@+id/play_button"
+                android:layout_toRightOf="@+id/play_button"
                 android:onClick="pauseAudio"
                 android:contentDescription="@string/pause_button"/>
         <ImageButton android:id="@+id/replay_button"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_toEndOf="@+id/pause_button"
+                android:layout_toRightOf="@+id/pause_button"
                 android:src="@drawable/repeat"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
@@ -59,6 +61,7 @@
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
                 android:layout_toEndOf="@+id/record_button"
+                android:layout_toRightOf="@+id/record_button"
                 android:onClick="playBackRecording"
                 android:contentDescription="@string/play_back_recording_button"/>
     </RelativeLayout>
