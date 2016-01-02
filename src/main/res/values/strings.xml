@@ -7,5 +7,6 @@
     <string name="pause_button">Pause</string>
     <string name="record_button">Record</string>
     <string name="play_back_recording_button">Play Back</string>
+    <string name="action_select_file">Select file</string>
 
 </resources>
