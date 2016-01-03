@@ -12,6 +12,7 @@ import com.devpaul.filepickerlibrary.FilePickerActivity;
 import com.devpaul.filepickerlibrary.enums.FileScopeType;
 import com.mkurutin.narrator.R;
 import com.mkurutin.narrator.config.NarratorApplication;
+import com.mkurutin.narrator.services.ApplicationStateStore;
 import com.mkurutin.narrator.services.AudioPlayer;
 import com.mkurutin.narrator.services.AudioRecorder;
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     AudioPlayer audioPlayer;
     @Inject
     AudioRecorder audioRecorder;
+    @Inject
+    ApplicationStateStore applicationStateStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        audioPlayer.init();
         audioRecorder.init();
     }
 
@@ -45,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
         audioPlayer.startFromLastPosition();
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        System.out.println("requestCode=" + requestCode);
-//        System.out.println("resultCode=" + resultCode);
-//        System.out.println("data=" + data.getStringExtra(FilePickerActivity.FILE_EXTRA_DATA_PATH));
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == FilePickerActivity.REQUEST_FILE && resultCode == RESULT_OK) {
+            String selectedFileName = data.getStringExtra(FilePickerActivity.FILE_EXTRA_DATA_PATH);
+            applicationStateStore.setSelectedFileName(selectedFileName);
+        }
+    }
 
     public void pauseAudio(View button) {
         audioPlayer.pause();
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        audioPlayer.shutDown();
         audioRecorder.shutDown();
         super.onStop();
     }

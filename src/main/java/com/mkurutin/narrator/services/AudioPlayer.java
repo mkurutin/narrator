@@ -19,9 +19,6 @@ public class AudioPlayer {
         this.applicationStateStore = applicationStateStore;
     }
 
-    public synchronized void init() {
-    }
-
     public synchronized void startFromBeginning() {
         if (this.mediaPlayer == null) {
             this.mediaPlayer = createMediaPlayer();
@@ -48,13 +45,10 @@ public class AudioPlayer {
         }
     }
 
-    public synchronized void shutDown() {
-    }
-
     private MediaPlayer createMediaPlayer() {
         MediaPlayer mediaPlayer = new MediaPlayer();
         try {
-            mediaPlayer.setDataSource(applicationStateStore.getRecordingFileName());
+            mediaPlayer.setDataSource(applicationStateStore.getSelectedFileName());
             mediaPlayer.prepare();
         } catch (IOException ex) {
             Log.e(TAG, "Failed to prepare MediaPlayer:", ex);
