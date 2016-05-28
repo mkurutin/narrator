@@ -8,8 +8,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import com.devpaul.filepickerlibrary.FilePickerActivity;
-import com.devpaul.filepickerlibrary.enums.FileScopeType;
+import com.github.developerpaul123.filepickerlibrary.FilePickerActivity;
+import com.github.developerpaul123.filepickerlibrary.enums.Request;
+import com.github.developerpaul123.filepickerlibrary.enums.Scope;
 import com.mkurutin.narrator.R;
 import com.mkurutin.narrator.config.NarratorApplication;
 import com.mkurutin.narrator.services.ApplicationStateStore;
@@ -88,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_select_file) {
             Intent filePickerIntent = new Intent(this, FilePickerActivity.class);
-            filePickerIntent.putExtra(FilePickerActivity.SCOPE_TYPE, FileScopeType.ALL);
-            filePickerIntent.putExtra(FilePickerActivity.REQUEST_CODE, FilePickerActivity.REQUEST_FILE);
+            filePickerIntent.putExtra(FilePickerActivity.SCOPE, Scope.ALL);
+            filePickerIntent.putExtra(FilePickerActivity.REQUEST, Request.FILE);
             startActivityForResult(filePickerIntent, FilePickerActivity.REQUEST_FILE);
             return true;
         }
